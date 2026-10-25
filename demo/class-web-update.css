@@ -1,0 +1,88 @@
+/* Shared web polish: keep the existing iOS workspace and responsive navigation. */
+button{min-height:44px;min-width:44px}
+.student-info .name-button{min-height:44px;min-width:44px}
+
+#undoNotice.undo-notice{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+ margin:20px 36px 0;
+ padding:10px 14px;
+ border:1px solid #dce4f0;
+ border-radius:12px;
+ background:var(--surface,#fff);
+ color:#43546b;
+ font-size:13px;
+ line-height:1.6;
+}
+#undoNotice.undo-notice[hidden]{display:none}
+#undoNotice.undo-notice>span{flex:1;min-width:0;overflow-wrap:anywhere}
+#undoNotice.undo-notice>button{flex:none;min-height:44px;min-width:44px;white-space:nowrap}
+
+/* A receipt follows the teacher's action even after scrolling the roster. */
+#rewardNotice.reward-notice{
+ position:fixed;
+ z-index:70;
+ top:auto;
+ left:auto;
+ right:24px;
+ bottom:24px;
+ display:grid;
+ grid-template-columns:64px minmax(0,1fr) 44px;
+ align-items:start;
+ gap:12px;
+ width:min(510px,calc(100% - var(--ui-sidebar,238px) - 48px));
+ max-width:calc(100% - 48px);
+ max-height:min(360px,calc(100vh - 48px));
+ margin:0;
+ padding:16px;
+ overflow-y:auto;
+ overscroll-behavior:contain;
+ border:1px solid #dce4f0;
+ border-radius:16px;
+ background:var(--surface,#fff);
+ box-shadow:0 8px 28px rgba(30,50,80,.14);
+}
+#rewardNotice.reward-notice[hidden]{display:none}
+#rewardNotice>.reward-portrait{width:64px;height:64px}
+#rewardNotice>div{min-width:0}
+#rewardNotice strong{font-size:18px;line-height:1.5}
+#rewardNotice p{font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+#rewardNotice>.icon-button{
+ position:sticky;
+ top:0;
+ align-self:start;
+ width:44px;
+ height:44px;
+ min-width:44px;
+ min-height:44px;
+ margin:0;
+ padding:10px;
+}
+#rewardNotice .actions{display:flex;flex-wrap:wrap;gap:0 8px}
+#rewardNotice button.quiet{min-height:44px;min-width:44px;padding:8px 0;font-size:13px;text-align:left}
+
+@media(max-width:1150px){
+ #undoNotice.undo-notice{margin-left:24px;margin-right:24px}
+}
+@media(max-width:700px){
+ #undoNotice.undo-notice{margin:14px 20px 0;padding:8px 12px;gap:10px}
+ #rewardNotice.reward-notice{
+  right:12px;
+  bottom:calc(78px + env(safe-area-inset-bottom));
+  width:calc(100% - 24px);
+  max-width:calc(100% - 24px);
+  max-height:min(280px,40vh);
+  grid-template-columns:48px minmax(0,1fr) 44px;
+  gap:10px;
+  padding:12px;
+  border-radius:14px;
+ }
+ #rewardNotice>.reward-portrait{width:48px;height:48px}
+ #rewardNotice strong{font-size:16px}
+ #rewardNotice .actions{gap:0 6px}
+}
+@media print{
+ #undoNotice.undo-notice,#rewardNotice.reward-notice{display:none!important}
+}
