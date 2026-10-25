@@ -1,0 +1,225 @@
+/* Existing jade garden, amplified through complete original paintings. */
+.sidebar{background:var(--jade);color:var(--surface);border-right:0}
+.sidebar .brand,.sidebar .brand small,.sidebar .class-label,.sidebar .sidebar-foot p,.sidebar button.quiet{color:var(--surface)}
+.sidebar .brand-mark{border-color:var(--gold);color:var(--surface)}
+.sidebar select{background:var(--surface);color:var(--ink);border-color:var(--surface)}
+.sidebar .nav-link{color:var(--surface)}
+.sidebar .nav-link.active{background:var(--surface);color:var(--jade)}
+.sidebar .nav-link:not(.active):hover,.sidebar button.quiet:hover{background:var(--ink);color:var(--surface)}
+.sidebar .sidebar-foot{border-top:1px solid var(--gold);padding-top:24px}
+.topbar{background:var(--surface)}
+.page-head{padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:30px}
+.work-layout{grid-template-columns:minmax(0,1fr) 36%;gap:30px}
+.stage .scene,.welcome .scene{aspect-ratio:1;border-radius:16px;box-shadow:var(--shadow);background:var(--pale)}
+.stage .scene>img,.welcome .scene>img{object-fit:contain}
+.stage .scene:before,.welcome .scene:before{content:"";position:absolute;inset:10px;border:1px solid var(--gold);border-radius:12px;pointer-events:none;z-index:1}
+.stage .scene-caption{align-items:baseline;padding:4px 0 14px;border-bottom:1px solid var(--line)}
+.stage .pet-name{font-size:38px;line-height:1.3}
+.stage .pet-state{padding-top:18px}
+.stage .pet-bubble{bottom:18px;left:18px;right:18px;font-size:13px}
+.assignment{box-shadow:none;background:var(--pale)}
+.selection-bar{background:var(--surface)}
+.student-row{padding-top:14px;padding-bottom:14px}
+.student-info img{border-radius:12px;width:58px;height:58px}
+.roster-grid{gap:24px}
+.roster-pet{box-shadow:none;background:transparent;border-radius:0}
+.roster-pet img{aspect-ratio:1;object-fit:contain;border-radius:16px}
+.roster-pet .roster-body{padding:16px 0 0}
+.roster-pet h3{font-size:17px}
+.welcome{gap:36px;grid-template-columns:minmax(0,1fr) 46%}
+.welcome .scene{max-width:none}
+.welcome-title{font-size:48px;max-width:12ch}
+.journey-art{border-radius:16px}
+.journey-art img{object-fit:contain}
+.form-journey .current .journey-art:after{content:"";position:absolute;inset:10px;border:1px solid var(--gold);border-radius:12px;pointer-events:none}
+.honor-card{border:0;border-radius:0;background:transparent}
+.honor-card img{height:auto;aspect-ratio:1;object-fit:contain;border-radius:16px}
+.honor-card .card-copy{padding:16px 0;text-align:left}
+.honor-card .card-stamp{letter-spacing:0}
+.honor-card button{width:100%;margin-top:12px}
+.print-promise{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;border-top:1px solid var(--line)}
+.print-promise h2{font-size:27px}
+.print-promise p{color:var(--muted);font-size:14px;margin:8px 0 0}
+@media(min-width:1600px){.work-layout{grid-template-columns:minmax(0,1fr) 390px}}
+@media(max-width:1150px){.work-layout{grid-template-columns:minmax(0,1fr) 32%;gap:24px}.stage .pet-name{font-size:29px}.student-info img{width:48px;height:48px}.welcome-title{font-size:38px}}
+@media(max-width:900px){.work-layout{grid-template-columns:minmax(0,1fr) 31%;gap:20px}.stage .pet-bubble{font-size:11px;left:14px;right:14px;bottom:14px}.stage .scene-caption{display:block}.stage .scene-caption span{display:block;margin-top:5px}.student-info img{display:none}}
+@media(max-width:700px){
+.sidebar{border-bottom:0}.sidebar nav{background:var(--jade)}
+.sidebar .nav-link:not(.active):hover{background:var(--ink)}
+.page-head{padding-bottom:20px;margin-bottom:24px}.work-layout{display:flex;gap:30px}
+.stage{grid-template-columns:44% minmax(0,1fr);gap:16px;padding-top:24px}
+.stage .scene:before{inset:6px;border-radius:10px}
+.stage .pet-name{font-size:27px}.stage .scene-caption{padding-bottom:0;border:0}
+.stage .scene-caption span{font-size:11px}
+.stage .pet-bubble{position:static;border-radius:0;box-shadow:none;padding:10px 8px;font-size:11px;background:var(--surface)}
+.stage .scene{aspect-ratio:auto}.stage .scene>img{aspect-ratio:1;height:auto}
+.stage .scene:before{bottom:48px}.stage .pet-state{padding-top:0}.stage .hungry-face{top:25%}
+.stage .empty-bowl{top:16px;right:16px}
+.student-info img{display:block;width:44px;height:44px}.student-row{padding-top:12px;padding-bottom:12px}
+.roster-grid{gap:24px 14px}.roster-pet .roster-body{padding:12px 0 0}
+.roster-pet h3{font-size:14px;align-items:flex-start;gap:4px;flex-wrap:wrap}
+.welcome{display:flex;flex-direction:column;gap:30px;align-items:stretch}
+.welcome>div:last-child{max-width:100%}.welcome .scene{max-width:100%;width:100%}.welcome-title{font-size:38px}
+.journey-art{border-radius:16px}.card-preview{gap:24px 14px}.honor-card .card-copy{padding:12px 0}
+.print-promise{display:block;padding:24px 0}.print-promise button{margin-top:16px;width:100%}
+}
+/* Classroom reward tools lead; companion artwork has room to breathe. */
+.exam-screen .page-head{padding-bottom:18px;margin-bottom:20px}
+.exam-summary{padding:16px 20px;margin-bottom:16px}
+.exam-summary>p{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:8px}
+.exam-summary>p span{color:var(--jade);font-variant-numeric:tabular-nums}
+.exam-rules p{font-size:13px;color:var(--muted);margin:8px 0 0}
+@media(max-width:700px){
+ .exam-summary{padding:16px}
+ .stage{display:block;padding-top:24px}
+ .stage .scene{aspect-ratio:1;max-width:400px;margin:0 auto}
+ .stage .scene-caption{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:16px;padding:0 0 12px;border-bottom:1px solid var(--line)}
+ .stage .scene-caption span{font-size:12px;margin-top:0}
+ .stage .pet-state{padding-top:24px}
+ .stage .pet-state>p{font-size:13px}
+ .stage .growth-line{font-size:14px}
+ .stage .growth-track{height:8px}
+ .stage .growth-stops{font-size:12px;gap:6px}
+ .stage .hunger-note{padding:14px;font-size:13px;line-height:1.7}
+ .stage .hunger-note strong{font-size:14px}
+ .stage .facts{font-size:12px;gap:20px;flex-wrap:wrap;margin-top:18px;padding-top:14px}
+ .stage .journal{margin-top:24px}
+ .stage .journal p{font-size:12px}
+}
+
+/* A comfortable label target preserves the original compact checkbox. */
+.roster-check{display:grid;place-items:center;min-height:44px}
+@media(max-width:700px){
+ .selectable-row{grid-template-columns:44px minmax(0,1fr) auto}
+ .selectable-row .roster-check{width:44px;min-height:44px}
+ .selectable-row .student-info,.selectable-row .student-info>div{min-width:0}
+ .selectable-row .student-info .name-button{min-height:44px}
+ .student-row .row-actions button{min-width:44px;min-height:44px}
+ .selection-bar .select-all{min-height:44px}
+}
+
+/* Mobile companion navigation returns to the same student without losing the roster. */
+.companion-navigation{display:none}
+@media(max-width:700px){
+ .companion-navigation{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:18px}
+ .companion-navigation strong{font-size:14px;min-width:0;overflow-wrap:anywhere}
+ .companion-navigation button{flex:none;min-height:44px;font-size:13px;padding:8px}
+ .companion-navigation .icon{transform:rotate(180deg);width:18px;height:18px}
+ #petStage{scroll-margin-top:16px}
+}
+
+/* One glance at progress, one tap to the students who need attention. */
+.homework-progress{padding:0}
+.check-progress-heading{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:13px;margin-bottom:9px}
+.check-progress-heading>span{color:var(--muted);font-variant-numeric:tabular-nums}
+.homework-progress .growth-track{height:5px}
+.check-shortcuts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.check-shortcuts button{min-height:44px;gap:8px;padding:7px 10px;font-size:13px;border:1px solid var(--line);border-radius:10px}
+.check-shortcuts button b{font-variant-numeric:tabular-nums}
+.check-shortcuts button.active{background:var(--jade);color:var(--surface);border-color:var(--jade)}
+.check-shortcuts button[data-filter=missing]:not(.active){color:var(--rose)}
+@media(max-width:700px){.check-shortcuts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.check-shortcuts button{display:flex;flex-direction:column;gap:0;padding:5px 4px;font-size:12px;min-height:52px}.check-shortcuts button b{font-size:14px}}
+
+/* Narrow rosters give names their own line and place teacher actions underneath. */
+@media(max-width:420px){
+ .student-row.selectable-row{grid-template-columns:44px minmax(0,1fr);gap:6px 10px}
+ .selectable-row .roster-check{grid-row:1 / span 2;align-self:stretch}
+ .selectable-row .student-info{grid-column:2;min-width:0}
+ .selectable-row .student-info>div{flex:1;min-width:0}
+ .selectable-row .student-info .name-button{width:100%;min-width:44px;overflow-wrap:anywhere}
+ .selectable-row .row-actions{grid-column:2;justify-content:flex-start;gap:6px;flex-wrap:wrap}
+}
+
+/* Teaching follows a complete recovery loop; progress belongs to each companion. */
+.head-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px}
+.care-summary{padding:18px 20px;background:var(--pale);border-radius:16px}
+.care-summary>strong{font-size:19px}
+.care-summary p{font-size:13px;color:var(--muted);margin:7px 0 0}
+.care-student{padding:22px 0;border-bottom:1px solid var(--line)}
+.care-student>header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.care-student.selected{border-bottom-color:var(--jade)}
+.care-student .student-info{min-width:0}
+.care-student .student-info>div{min-width:0}
+.care-student .student-info img{display:block;width:48px;height:48px}
+.care-student .name-button{min-width:44px;min-height:44px;overflow-wrap:anywhere}
+.care-countdown{font-size:12px;color:var(--rose)}
+.care-student>button{min-height:44px}
+.care-student>ul{padding:0;margin:12px 0 0;list-style:none}
+.makeup-task{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:16px 0;border-top:1px solid var(--line)}
+.makeup-task>div{min-width:0}
+.makeup-task strong{display:block;font-size:14px;overflow-wrap:anywhere}
+.makeup-task small{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.makeup-task button{font-size:13px;min-height:44px;padding:10px 12px}
+.makeup-task summary{min-height:44px;display:flex;align-items:center;font-size:12px;color:var(--jade);cursor:pointer}
+.makeup-task summary:before{content:'+';margin-right:8px}
+.makeup-task details[open] summary:before{content:'−'}
+.makeup-task details p{font-size:13px;margin:0;color:var(--muted);overflow-wrap:anywhere}
+.care-empty{padding:42px 20px;text-align:center}
+.care-empty>span{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 18px;background:var(--pale);color:var(--jade);border-radius:50%}
+.care-empty .icon{width:28px;height:28px}
+.care-empty h2{font-size:26px}
+.care-empty p{font-size:14px;color:var(--muted);margin:12px auto 24px}
+.stage .hunger-note button{display:flex;margin-top:9px;padding:7px 0;min-height:44px;text-decoration:underline;text-underline-offset:4px;font-size:13px}
+.effort-preview .badge-goal{margin:12px 0;font-size:13px;line-height:1.8;color:var(--ink)}
+.week-effort{padding:20px;margin:24px 0 28px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.week-heading{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.week-heading h2{font-size:24px}
+.week-heading>span{font-size:12px;color:var(--muted)}
+.week-days{list-style:none;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;padding:0;margin:20px 0 12px}
+.week-days li{display:flex;align-items:center;flex-direction:column;gap:8px;font-size:12px;color:var(--muted);min-width:0}
+.week-mark{display:grid;place-items:center;width:36px;max-width:100%;height:36px;border:1px solid var(--line);border-radius:50%;background:var(--paper);font-size:14px;font-weight:500}
+.week-days .earned .week-mark{color:var(--surface);background:var(--jade);border-color:var(--jade)}
+.week-days .today .week-mark{outline:2px solid var(--gold);outline-offset:3px}
+.week-days .today small{color:var(--jade);font-weight:600}
+.week-days .future{opacity:.55}
+.week-days small{font-size:11px;white-space:nowrap}
+.week-note{font-size:12px;color:var(--muted);margin:16px 0}
+.next-badge{display:flex;align-items:flex-start;gap:12px;border-top:1px solid var(--line);padding-top:16px}
+.next-badge>span{display:grid;place-items:center;background:var(--pale);color:var(--jade);width:40px;height:40px;border-radius:50%;flex:none}
+.next-badge>div{min-width:0}
+.next-badge strong{font-size:14px}
+.next-badge p{font-size:13px;color:var(--muted);margin:4px 0 0}
+@media(max-width:700px){
+ .head-actions{justify-content:flex-start}
+ .makeup-task{grid-template-columns:minmax(0,1fr);gap:10px}
+ .makeup-task>button{justify-self:start;min-width:150px}
+ .care-student>header{align-items:flex-start}
+ .care-countdown{width:100%;padding-left:61px}
+ .care-summary{padding:16px}
+ .care-summary>strong{font-size:18px}
+ .week-effort{padding:14px}
+ .week-heading h2{font-size:23px}
+ .week-days{gap:4px}
+ .week-mark{height:32px;width:32px}
+}
+
+/* Art review: complete paintings, readable captions and room at tablet widths. */
+:root{--care-paper:#f5e2d6;--care-ink:#793f35}
+.stage .scene-caption{margin:0 0 16px;padding:0;border:0;align-items:baseline}
+.stage .scene-caption span{font-size:12px}
+.student-info small{font-size:12px}
+.status-tag,.row-actions .status-tag{font-size:12px}
+.row-actions button,.selection-bar button{font-size:13px}
+.week-days .future{opacity:1}
+.week-days .future .week-mark{border-style:dashed;background:transparent}
+.week-days small{font-size:12px}
+.locked .journey-art img{filter:saturate(.72);opacity:1}
+@media(min-width:701px) and (max-width:1000px){
+ .page-head{flex-wrap:wrap}
+ .head-actions{justify-content:flex-start}
+ .work-layout{grid-template-columns:minmax(0,1fr)}
+ .stage{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-top:24px;border-top:1px solid var(--line)}
+ .stage .pet-state{padding-top:0}
+ .stage .journal{grid-column:1/-1;margin-top:0}
+ .growth-layout .stage{display:none}
+ .student-info img{display:block}
+ .row-actions{max-width:none;gap:6px}
+}
+@media(max-width:700px){
+ .stage .scene-caption{display:flex;margin:0 0 16px}
+ .student-info small{font-size:12px}
+ .row-actions button,.selection-bar button{font-size:13px}
+}
+
+.week-date-short{display:none}
+@media(max-width:360px){.week-date-full{display:none}.week-date-short{display:inline}}

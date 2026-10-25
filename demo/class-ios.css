@@ -1,0 +1,295 @@
+/* iOS-inspired classroom UI. Loaded only by index.html; print art stays independent. */
+:root{
+ --paper:#f2f2f7;
+ --surface:#ffffff;
+ --ink:#1c1c1e;
+ --muted:#636369;
+ --jade:#0066cc;
+ --pale:#eaf2ff;
+ --gold:#996100;
+ --gold-light:#fff2d6;
+ --line:#dcdce2;
+ --rose:#b33b32;
+ --care-paper:#fff1ea;
+ --care-ink:#873c24;
+ --shadow:0 8px 24px rgba(28,28,30,.07);
+ --ui-font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+ --ui-accent:#0066cc;
+ --ui-accent-hover:#0057ad;
+ --ui-fill:#e9e9ef;
+ --ui-hover:#f5f5fa;
+ --ui-field-line:#b8b8c0;
+ --ui-radius:14px;
+ --ui-sidebar:238px;
+ color-scheme:light;
+}
+body{font-family:var(--ui-font);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.brand,.pet-name,.welcome-title,.honor-card h3,
+.form-journey figcaption strong,.reward-notice strong{font-family:var(--ui-font)}
+h1{font-size:34px;font-weight:700;letter-spacing:-.025em;line-height:1.25}
+h2{font-size:23px;font-weight:650;letter-spacing:-.015em}
+h3{font-weight:650}
+button,input,select,textarea{font-family:var(--ui-font)}
+button{border-radius:11px;background:var(--ui-accent);font-weight:600;transition:background-color .16s ease-out}
+button:hover{background:var(--ui-accent-hover)}
+button.secondary{background:var(--pale);color:var(--ui-accent)}
+button.secondary:hover{background:#dceaff}
+button.quiet{color:var(--ui-accent);background:transparent}
+button.quiet:hover{background:var(--ui-fill)}
+button:disabled{opacity:1;background:var(--ui-fill);color:var(--muted)}
+button.quiet:disabled{background:transparent;color:var(--muted)}
+button.small{min-height:44px}
+.icon-button{color:var(--muted);background:var(--ui-fill);border-radius:50%}
+.icon-button:hover{color:var(--ink);background:var(--line)}
+.icon{stroke-width:1.8}
+input,select,textarea{background:var(--surface);border-color:var(--ui-field-line);border-radius:10px}
+input::placeholder,textarea::placeholder{color:var(--muted)}
+input[type=checkbox]{accent-color:var(--ui-accent)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,
+textarea:focus-visible,summary:focus-visible{outline:3px solid var(--ui-accent);outline-offset:3px}
+.sidebar{width:var(--ui-sidebar);background:#fafafd;color:var(--ink);border-right:1px solid var(--line);padding:28px 18px 22px}
+.sidebar .brand{color:var(--ink);font-size:20px;gap:10px;letter-spacing:-.025em;margin-bottom:34px}
+.sidebar .brand small{font-family:var(--ui-font);font-size:12px;letter-spacing:0;color:var(--muted);font-weight:400;line-height:1.6;margin-top:4px}
+.sidebar .brand-mark{width:42px;height:42px;flex:none;border:0;border-radius:12px;background:var(--ui-accent);color:white}
+.brand-mark svg{width:29px;height:29px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.sidebar .class-label{color:var(--muted);font-size:12px;padding-left:4px;margin-bottom:8px}
+.sidebar select{background:var(--surface);color:var(--ink);border-color:var(--line);font-size:14px}
+.sidebar button.quiet{color:var(--ui-accent)}
+.sidebar>.small{margin:4px 0 25px;padding:8px 4px}
+.sidebar nav{gap:6px}
+.sidebar .nav-link{color:#48484e;padding:12px 14px;min-height:48px;border-radius:11px;font-weight:500}
+.sidebar .nav-link .icon{color:var(--ui-accent)}
+.sidebar .nav-link.active{background:#e4eeff;color:var(--ui-accent);font-weight:650}
+.sidebar .nav-link:not(.active):hover,.sidebar button.quiet:hover{background:var(--ui-fill);color:var(--ui-accent)}
+.sidebar .sidebar-foot{border-top:1px solid var(--line);padding-top:20px}
+.sidebar .sidebar-foot p{color:var(--muted);max-width:none;font-size:12px;margin-bottom:8px}
+.sidebar-foot button{font-size:13px}
+.shell{margin-left:var(--ui-sidebar)}
+.topbar{background:var(--surface);padding-top:10px;padding-bottom:10px;min-height:64px;font-size:13px}
+.topbar>span:first-child{color:var(--ink);font-weight:600}
+#saveStatus{color:var(--muted)}
+.topbar .quiet{font-size:13px}
+main{padding-top:30px}
+.page-head{border:0;padding-bottom:0;margin-bottom:28px;align-items:center}
+.page-head>div:first-child{min-width:0}
+.page-head p{font-size:14px;margin-top:10px;line-height:1.7}
+.head-actions{flex:none}
+.head-action{margin-top:0}
+.page-foot{font-size:12px}
+.demo-banner{background:#e9eef8;color:#405474;font-size:12px;min-height:48px;padding-top:4px;padding-bottom:4px}
+.demo-banner .quiet{color:#245da5}
+.save-warning{background:var(--care-paper);color:var(--care-ink)}
+.assignment,.form-panel{background:var(--surface);border-radius:var(--ui-radius);box-shadow:none}
+.assignment{padding:20px;margin-bottom:22px}
+.assignment-meta label,.exam-summary label{font-size:13px}
+.assignment p{font-size:13px;line-height:1.7;margin-top:10px}
+.assignment h2,.form-panel h2{font-size:22px}
+.form-panel{padding:24px}
+.homework-progress{margin-bottom:18px}
+.check-progress-heading{font-size:13px}
+.growth-track{background:#dddde5}
+.homework-progress .growth-track{height:5px}
+.check-shortcuts{background:var(--ui-fill);padding:4px;border-radius:12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;margin-top:12px}
+.check-shortcuts button{background:transparent;border:0;border-radius:9px;color:#515159;padding:7px 5px;font-size:13px;gap:6px}
+.check-shortcuts button:hover{background:#f5f5fa}
+.check-shortcuts button.active{background:var(--surface);color:var(--ui-accent);box-shadow:0 2px 5px rgba(28,28,30,.11)}
+.check-shortcuts button[data-filter=missing]:not(.active){color:var(--rose)}
+.list-tools{gap:10px;margin:20px 0 12px}
+.list-tools input{background:#e9e9ef;border-color:transparent}
+.list-tools input:focus{background:var(--surface);border-color:var(--ui-accent)}
+.filter-select{border-color:var(--line)}
+.selection-bar{padding:0 0 12px;background:transparent;border-radius:0;gap:8px}
+.selection-bar .select-all{min-height:44px;font-size:12px}
+.selection-bar button{font-size:13px;min-height:44px}
+.student-list{background:var(--surface);border:0;border-radius:var(--ui-radius);overflow:hidden}
+.student-row{padding:14px 14px;min-height:88px;border-color:#e6e6eb;gap:10px}
+.student-row:last-child{border-bottom:0}
+.student-row.selected{background:#eaf2ff}
+.student-info{gap:12px;min-width:0}
+.student-info>div{min-width:0}
+.student-info img{border-radius:12px}
+.student-info strong{font-size:15px;font-weight:650}
+.student-info small{font-size:12px;line-height:1.5}
+.student-info .name-button{min-height:30px;overflow-wrap:anywhere}
+.student-info .name-button:hover{color:var(--ui-accent);text-decoration:none}
+.row-actions button{font-size:13px;padding:8px 10px;min-height:44px}
+.status-tag{background:#eaf2ff;color:#205fa1;border-radius:6px;font-size:12px;padding:3px 7px;font-weight:500}
+.status-tag.missing{background:var(--care-paper);color:var(--care-ink)}
+.status-tag.pending{background:#efeff4;color:#5b5b63}
+.rule-note{line-height:1.75}
+.inline-details summary{min-height:44px;align-content:center;font-size:14px}
+.stage .scene-caption{margin:0 0 16px;gap:12px}
+.stage .pet-name{font-family:var(--ui-font);font-size:28px;letter-spacing:-.02em;font-weight:700}
+.stage .scene-caption span{color:var(--muted);font-size:12px}
+.stage .pet-art-window{box-shadow:var(--shadow)}
+.stage .scene{background:transparent}
+.pet-response{background:var(--surface);border-radius:12px;padding:14px;margin-top:16px}
+.pet-response .expression-paper{fill:var(--surface);stroke:#b2b2bc}
+.pet-mood-title{font-weight:650}
+.pet-companion-tools button{font-size:14px;background:var(--pale)}
+.pet-companion-tools button:hover{background:#dceaff}
+.stage .pet-state{padding-top:22px}
+.pet-state>strong{font-size:17px}
+.pet-state p,.journal p{font-size:13px}
+.hunger-note{background:var(--care-paper);color:var(--care-ink)}
+.growth-stops{font-size:12px;gap:6px}
+.pet-state .facts{font-size:12px}
+.next-growth,.effort-preview{border-color:var(--line)}
+.earned-token{color:#805300}
+.roster-pet,.honor-card{border-radius:var(--ui-radius);background:var(--surface)}
+.roster-pet img,.honor-card img{border-radius:14px 14px 0 0}
+.roster-pet .roster-body,.honor-card .card-copy{padding:16px}
+.roster-pet h3{font-size:17px}
+.roster-pet p,.honor-card p{font-size:13px}
+.roster-pet button{font-size:13px}
+.honor-card h3{font-size:22px;font-weight:650}
+.honor-card .card-stamp{color:#805300;font-size:12px}
+.print-promise h2{font-size:23px}
+.gift-list .icon{color:#996100}
+.reward-copy{color:#805300}
+.settings h2{font-size:22px;margin:28px 0 12px}
+.settings .form-grid{background:var(--surface);padding:20px;border-radius:14px;gap:18px}
+.settings .link-row{background:var(--surface);padding:18px 20px;border-bottom-color:#e6e6eb}
+.settings .link-row:first-of-type{border-radius:14px 14px 0 0}
+.settings .link-row:last-of-type{border-radius:0 0 14px 14px;border-bottom:0}
+dialog{background:var(--paper);padding:26px;border-radius:20px;box-shadow:0 24px 80px rgba(28,28,30,.22)}
+dialog::backdrop{background:rgba(28,28,30,.32)}
+.dialog-head h2{font-size:24px}
+.dialog-head .icon-button{width:44px;height:44px;min-width:44px;min-height:44px}
+.pet-option{background:var(--surface);color:var(--ink)}
+.pet-option:hover{background:var(--pale);color:var(--ui-accent)}
+.pet-option span{font-size:13px;padding:10px 3px}
+.reward-notice{background:var(--surface);border:0;box-shadow:none}
+.reward-notice strong{font-size:22px}
+.reward-notice p{color:var(--muted)}
+.reward-notice .icon-button{min-width:36px;min-height:36px;height:36px;padding:7px}
+.reward-notice>div{min-width:0}
+.week-effort{border:0;background:var(--surface);padding:22px}
+.week-heading h2{font-size:22px}
+.week-mark{background:var(--paper);color:var(--muted)}
+.week-days .today .week-mark{outline-color:var(--ui-accent)}
+.week-days .earned .week-mark{background:var(--ui-accent);color:white}
+.week-days .future{opacity:1}
+.form-journey .current .journey-art:after{inset:4px;border-color:var(--ui-accent)}
+.form-journey figcaption strong{font-size:19px;font-weight:650}
+.book-intro p{font-size:15px}
+.book-intro h2,.badge-collection h2,.makeup-list h2,.personal-journal h2{font-size:23px}
+.badge-collection ul,.personal-journal ol{background:var(--surface);padding:0 18px;border-radius:14px}
+.badge-collection li:last-child,.personal-journal li:last-child{border-bottom:0}
+.earned .badge-symbol{background:var(--gold-light);color:#805300}
+.care-summary{background:var(--surface);padding:20px}
+.care-student{border:0;padding:20px;background:var(--surface);border-radius:14px;margin-top:16px}
+.care-student.selected{box-shadow:inset 0 0 0 1px var(--ui-accent)}
+.care-empty{background:var(--surface);border-radius:14px;margin-top:20px}
+.care-empty h2{font-size:23px}
+.care-countdown{color:var(--care-ink)}
+.welcome-title{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1.3}
+.welcome .scene:before{display:none}
+.welcome .scene{background:var(--surface)}
+.welcome .pet-bubble{background:rgba(255,255,255,.96)}
+.toast{background:#303035;box-shadow:0 8px 24px rgba(28,28,30,.16);left:calc(50% + var(--ui-sidebar)/2)}
+@media(min-width:1001px) and (max-width:1270px){
+ .page-head{flex-wrap:wrap;gap:18px}
+ .work-layout{grid-template-columns:minmax(0,1fr) 32%;gap:24px}
+ .student-info img{width:44px;height:44px}
+ .student-row{padding:12px 10px;gap:8px}
+ .row-actions{flex-wrap:wrap;max-width:112px;justify-content:flex-end}
+ .selection-bar .select-all{flex-basis:calc(100% - 90px)}
+ .check-shortcuts button{flex-direction:column;gap:0}
+}
+@media(max-width:1150px){
+ :root{--ui-sidebar:200px}
+ .sidebar{padding:24px 14px}
+ .sidebar .brand{font-size:17px;gap:8px}
+ .sidebar .brand-mark{width:36px;height:36px;border-radius:10px}
+ .brand-mark svg{width:26px;height:26px}
+ .sidebar .nav-link{padding:12px}
+ .stage .pet-name{font-size:26px}
+}
+@media(min-width:701px) and (max-width:1000px){
+ .work-layout{grid-template-columns:minmax(0,1fr)}
+ .stage .pet-state{padding-top:0}
+ .page-head{gap:18px}
+ .student-row{padding:14px}
+ .student-info img{display:block;width:44px;height:44px}
+ .row-actions{max-width:none}
+}
+@media(max-width:700px){
+ .sidebar{width:auto;padding:18px 20px;background:var(--surface);grid-template-columns:minmax(0,1fr) 135px;border:0}
+ .sidebar .brand{margin:0;font-size:18px;gap:9px}
+ .sidebar .brand small{font-size:11px}
+ .sidebar .brand-mark{width:36px;height:36px}
+ .sidebar select{background:var(--paper);border:0;font-size:12px;min-height:44px}
+ .sidebar nav{background:rgba(250,250,253,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);box-shadow:none;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
+ .sidebar .nav-link{color:var(--muted);font-size:11px;font-weight:500;gap:4px;min-height:52px;padding:5px 2px;border-radius:0}
+ .sidebar .nav-link .icon{color:inherit;width:22px;height:22px}
+ .sidebar .nav-link.active{color:var(--ui-accent);background:transparent;font-weight:650}
+ .sidebar .nav-link:not(.active):hover{background:var(--ui-fill)}
+ .shell{margin:0}
+ .topbar{padding:4px 20px;gap:10px;min-height:52px}
+ #saveStatus{font-size:12px}
+ .topbar .quiet{padding:6px;font-size:12px}
+ main{padding-top:26px}
+ h1{font-size:32px;letter-spacing:-.025em}
+ .page-head{align-items:flex-start;padding:0;margin-bottom:24px;gap:18px}
+ .page-head p{font-size:13px}
+ .head-actions{gap:8px}
+ .head-action{font-size:14px}
+ .demo-banner{font-size:12px;gap:8px;padding:5px 20px}
+ .demo-banner button{font-size:12px;min-height:44px}
+ .assignment{padding:18px}
+ .form-panel{padding:20px}
+ .check-shortcuts{gap:3px}
+ .check-shortcuts button{font-size:12px;gap:1px;min-height:52px;padding:5px 2px}
+ .list-tools input,.filter-select{font-size:14px}
+ .selection-bar{gap:8px;padding-bottom:12px}
+ .selection-bar button{padding:8px 10px;font-size:13px}
+ .student-row{padding:14px 10px}
+ .student-info strong{font-size:15px}
+ .student-info .name-button{min-height:44px}
+ .row-actions button{font-size:13px}
+ .stage .pet-name{font-size:28px}
+ .stage .pet-state{padding-top:24px}
+ .stage .scene-caption{margin-top:0}
+ .stage .pet-response{padding:14px}
+ .pet-companion-tools{margin-top:10px}
+ .pet-companion-tools button{font-size:14px}
+ .roster-grid,.card-preview{gap:18px 12px}
+ .roster-pet .roster-body,.honor-card .card-copy{padding:13px}
+ .roster-pet h3{font-size:16px}
+ .roster-pet p{font-size:12px}
+ .roster-pet button{font-size:12px;min-height:44px}
+ .honor-card h3{font-size:20px}
+ .honor-card button{font-size:13px;padding:10px 6px}
+ .honor-card p{font-size:12px}
+ .reward-notice strong{font-size:19px}
+ .reward-notice p{font-size:13px}
+ .week-effort{padding:16px}
+ .week-heading h2{font-size:22px}
+ .settings .form-grid{padding:18px}
+ .settings .link-row{padding:16px 18px}
+ .care-student{padding:18px}
+ .care-countdown{padding-left:0}
+ .welcome-title{font-size:36px}
+ .page-foot{font-size:12px;padding-bottom:105px}
+ dialog{padding:20px;border-radius:18px}
+ .dialog-head h2{font-size:22px}
+ .pet-grid{gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
+ .toast{left:50%;bottom:85px}
+}
+@media(max-width:360px){
+ .sidebar{grid-template-columns:minmax(0,1fr) 112px;gap:8px}
+ .sidebar .brand{font-size:16px;gap:7px}
+ .sidebar .brand-mark{width:30px;height:30px;border-radius:9px}
+ .brand-mark svg{width:23px;height:23px}
+ .sidebar .brand small{font-size:10px}
+ .topbar{gap:4px}
+ .topbar .quiet{padding:6px 4px}
+ .roster-grid,.card-preview{grid-template-columns:minmax(0,1fr)}
+ .pet-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .selection-bar button{padding:8px}
+ .student-row{padding-left:6px;padding-right:8px}
+ .week-effort{padding:14px}
+ .care-student{padding:16px}
+}
+@media(prefers-reduced-motion:reduce){button{transition:none}}
