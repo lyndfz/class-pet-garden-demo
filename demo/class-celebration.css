@@ -1,0 +1,136 @@
+/* A transient keepsake for the moment a teacher awards a companion. */
+.celebrate-ribbon {
+  --foil:#ffdfa0;
+  --light:#c2beff;
+  --shade:#27244e;
+  position:fixed;
+  z-index:180;
+  top:66px;
+  top:calc(62px + env(safe-area-inset-top, 0px));
+  left:50%;
+  transform:translateX(-50%);
+  width:360px;
+  max-width:calc(100vw - 24px);
+  min-height:94px;
+  box-sizing:border-box;
+  padding:10px 24px 10px 17px;
+  display:flex;
+  align-items:center;
+  border:1px solid rgba(255,224,175,.79);
+  border-radius:21px;
+  background:radial-gradient(ellipse at 18% 85%,#665891 0%,transparent 57%),linear-gradient(110deg,#3d3664,var(--shade) 64%,#363156);
+  color:#fff;
+  text-align:left;
+  box-shadow:0 6px 24px #17142e45,inset 0 0 0 3px #ffffff0a;
+  overflow:hidden;
+  isolation:isolate;
+  pointer-events:none;
+  user-select:none;
+  font-family:system-ui,-apple-system,"Microsoft YaHei",sans-serif;
+}
+.celebrate-ribbon[data-kind=gift] {
+  --shade:#4c263f;
+  --light:#f7bfd4;
+  background:radial-gradient(ellipse at 17% 82%,#a35b74 0%,transparent 54%),linear-gradient(110deg,#754362,var(--shade) 69%,#63344d);
+}
+.celebrate-ribbon[data-kind=card] {
+  --shade:#2b3c50;
+  --light:#b7dcea;
+  background:radial-gradient(ellipse at 17% 85%,#567c8d 0%,transparent 55%),linear-gradient(110deg,#3e5a71,var(--shade) 66%,#374861);
+}
+.celebrate-sky {position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;overflow:hidden}
+.celebrate-sky::before,.celebrate-sky::after {
+  content:"";position:absolute;width:120%;height:170%;left:-18%;top:36%;
+  border:1px solid rgba(250,224,165,.20);border-radius:50%;transform:rotate(-14deg)
+}
+.celebrate-sky::after {top:52%;left:-9%;border-color:rgba(255,255,255,.12)}
+.celebrate-star {position:absolute;background:var(--foil);opacity:.79;clip-path:polygon(50% 0,64% 37%,100% 50%,63% 63%,50% 100%,37% 63%,0 50%,37% 38%)}
+.celebrate-seal {position:relative;flex:0 0 76px;height:76px;margin-right:18px;display:grid;place-items:center}
+.celebrate-portrait {
+  position:relative;width:63px;height:63px;box-sizing:border-box;border-radius:50%;
+  border:2px solid #ffdfa0;overflow:hidden;box-shadow:0 3px 10px #1c142f65;display:grid;place-items:center;background:#564866;
+}
+.celebrate-portrait img {position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.celebrate-symbol {font-size:34px;color:var(--foil);line-height:1}
+.celebrate-portrait[data-evolution] {background-size:100% 100%;background-position:center}
+.celebrate-portrait[data-evolution=star] {background-image:url("art-surprises/star-mantle-v2.webp")}
+.celebrate-portrait[data-evolution=cloud] {background-image:url("art-surprises/cloud-mantle-v2.webp")}
+.celebrate-portrait[data-evolution] img {top:11%;left:11%;width:78%;height:78%;border-radius:8px}
+.celebrate-portrait[data-evolution] .celebrate-symbol {visibility:hidden}
+.celebrate-orbit {position:absolute;top:2px;right:2px;bottom:2px;left:2px;border:1px solid #ffe2a411;border-top-color:var(--foil);border-bottom-color:var(--light);border-radius:50%;transform:rotate(-28deg)}
+.celebrate-orbit::after {content:"";position:absolute;left:8px;top:6px;width:5px;height:5px;background:#ffe4a7;box-shadow:0 0 6px var(--foil);border-radius:50%}
+.celebrate-badge {
+  position:absolute;right:6px;bottom:3px;width:16px;height:16px;background:var(--foil);
+  clip-path:polygon(50% 0,62% 33%,97% 35%,70% 58%,78% 94%,50% 75%,18% 94%,29% 60%,2% 35%,38% 32%);
+}
+.celebrate-ribbon[data-kind=gift] .celebrate-portrait {border-radius:17px}
+.celebrate-ribbon[data-kind=gift] .celebrate-orbit {top:1px;right:1px;bottom:1px;left:1px;border-radius:22px;transform:rotate(-8deg)}
+.celebrate-ribbon[data-kind=gift] .celebrate-badge {right:4px;bottom:6px;width:16px;height:13px;border-radius:2px;clip-path:none;background:linear-gradient(90deg,#ffd88d 40%,#9a5362 40%,#9a5362 57%,#ffd88d 57%);border-top:2px solid #fff0cb}
+.celebrate-ribbon[data-kind=card] .celebrate-portrait {width:51px;height:66px;border-radius:6px;transform:rotate(-7deg);border-bottom-width:6px}
+.celebrate-ribbon[data-kind=card] .celebrate-orbit {top:7px;right:12px;bottom:3px;left:12px;border:1px solid var(--foil);border-radius:5px;transform:rotate(7deg);z-index:-1}
+.celebrate-ribbon[data-kind=card] .celebrate-orbit::after {display:none}
+.celebrate-copy {display:flex;flex-direction:column;min-width:0;position:relative}
+.celebrate-heading {font:700 24px/1.22 system-ui,-apple-system,"Microsoft YaHei",sans-serif;letter-spacing:.04em;color:#fff4d7}
+.celebrate-detail {margin-top:5px;font-size:14px;font-weight:500;line-height:1.4;color:#fff;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow-wrap:anywhere}
+.celebrate-kicker {font-size:12px;line-height:1.45;letter-spacing:.16em;color:#e4ddfc;margin-bottom:2px;font-weight:600}
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] {
+  width:430px;min-height:180px;border-radius:26px;padding:12px 24px 12px 16px;
+  background:radial-gradient(ellipse at 23% 53%,#8b6589 0%,#514674 34%,transparent 63%),linear-gradient(112deg,#292854,#282342 72%,#3c3157);
+}
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-seal {flex-basis:156px;height:156px;margin-right:24px}
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-seal::before,
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-seal::after {
+  content:"";position:absolute;top:0;bottom:0;left:0;right:0;border-radius:50%;
+  border:1px solid #ffeba87a;box-shadow:inset 0 0 16px #ffe8a94a,0 0 17px #d8adfb45;
+}
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-seal::after {top:5px;bottom:5px;left:5px;right:5px;border:1px dashed #f5d5ac70;box-shadow:none}
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-portrait {width:84%;height:84%;border-radius:28%;box-shadow:0 0 15px #f5dc9d65}
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-badge {width:19px;height:19px;right:16px;bottom:9px}
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-heading {font-size:34px;letter-spacing:.07em}
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-detail {font-size:17px;margin-top:3px}
+.pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-kicker {margin-bottom:5px}
+
+@media (prefers-reduced-motion:no-preference) {
+  .pet-motion-enabled .celebrate-ribbon {animation:celebrate-arrive 2.45s both}
+  .pet-motion-enabled .celebrate-portrait {animation:celebrate-unseal .60s cubic-bezier(.18,.68,.21,1.13) both}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=card] .celebrate-portrait {animation-name:celebrate-card-turn}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=card] .celebrate-badge {animation:celebrate-stamp .36s .32s both}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=gift] .celebrate-portrait {animation:celebrate-pop .72s both}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=gift] .celebrate-star {animation-name:celebrate-burst}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-orbit {animation:celebrate-orbit 1.15s cubic-bezier(.12,.59,.24,1) both}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-seal::before {animation:celebrate-rise 1s cubic-bezier(.13,.6,.24,1) both}
+  .pet-motion-enabled .celebrate-star {animation:celebrate-star 1.25s ease-out both}
+  .pet-motion-enabled .celebrate-copy {animation:celebrate-letter .45s .09s both}
+}
+@keyframes celebrate-arrive {
+  0% {opacity:0;transform:translate(-50%,-8px)}
+  13%,82% {opacity:1;transform:translate(-50%,0)}
+  100% {opacity:0;transform:translate(-50%,-4px)}
+}
+@keyframes celebrate-unseal {from{opacity:.3;transform:scale(.74) rotate(-9deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes celebrate-card-turn {from{opacity:.3;transform:perspective(300px) rotateY(-55deg) rotate(-12deg)}to{opacity:1;transform:perspective(300px) rotateY(0) rotate(-7deg)}}
+@keyframes celebrate-pop {0%{opacity:.3;transform:translateY(8px) scale(.82)}38%{opacity:1;transform:translateY(-4px) rotate(-6deg)}64%{transform:translateY(1px) rotate(3deg)}100%{transform:translateY(0) rotate(0)}}
+@keyframes celebrate-burst {0%{opacity:0;transform:scale(.3) translate(-24px,16px) rotate(-40deg)}40%{opacity:1}100%{opacity:.7;transform:scale(1) translate(0,0) rotate(0)}}
+@keyframes celebrate-stamp {0%{opacity:0;transform:scale(2.3) rotate(18deg)}60%{opacity:1;transform:scale(.8)}100%{transform:scale(1) rotate(0)}}
+@keyframes celebrate-orbit {from{transform:rotate(-140deg) scale(.9)}to{transform:rotate(-28deg) scale(1)}}
+@keyframes celebrate-rise {from{opacity:0;transform:scale(.62)}52%{opacity:1}to{opacity:.83;transform:scale(1)}}
+@keyframes celebrate-letter {from{opacity:0;transform:translateX(-5px)}to{opacity:1;transform:translateX(0)}}
+@keyframes celebrate-star {0%{opacity:0;transform:scale(.45) translateY(6px)}48%{opacity:1}100%{opacity:.7;transform:scale(1) translateY(0)}}
+@media (max-width:700px) {
+  .celebrate-ribbon {top:50px;top:calc(50px + env(safe-area-inset-top,0px));width:330px}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=level] {min-height:143px;padding:9px 16px 9px 12px}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-seal {flex-basis:124px;height:124px;margin-right:19px}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-heading {font-size:28px}
+}
+@media (max-height:480px) and (orientation:landscape) {
+  .celebrate-ribbon {top:51px;top:calc(51px + env(safe-area-inset-top,0px));min-height:72px;width:306px;border-radius:16px;padding:6px 15px 6px 11px}
+  .celebrate-seal {flex-basis:56px;height:56px;margin-right:13px}
+  .celebrate-portrait {width:47px;height:47px}
+  .celebrate-ribbon[data-kind=card] .celebrate-portrait {width:37px;height:50px}
+  .celebrate-heading {font-size:20px}.celebrate-detail {font-size:13px;margin-top:2px}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=level] {width:332px;min-height:117px;padding:6px 16px 6px 10px;border-radius:20px}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-seal {flex-basis:104px;height:104px;margin-right:17px}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-heading {font-size:26px}
+  .pet-motion-enabled .celebrate-ribbon[data-kind=level] .celebrate-detail {font-size:14px}
+}
+@media print {.celebrate-ribbon,#rewardSoundToggle{display:none!important}}

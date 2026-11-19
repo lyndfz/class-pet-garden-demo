@@ -6,7 +6,7 @@
 
   const compact = matchMedia('(max-width:1000px)');
   const phone = matchMedia('(max-width:700px)');
-  const tools = [...bar.querySelectorAll('.edition-help,[data-action=demo],#motionToggle')];
+  const tools = [...bar.querySelectorAll('.edition-help,[data-action=demo],#motionToggle,#rewardSoundToggle')];
   const anchors = tools.map(tool => {
     const anchor = document.createComment('teacher tool');
     tool.before(anchor);
