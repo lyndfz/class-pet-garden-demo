@@ -14,6 +14,8 @@
   let context = null;
   let unlocking = null;
   let activeScore = null;
+  let soundVersion = 0;
+  const sampleBuffers = new Map();
   let generation = 0;
   let ribbon = null;
   let timer = 0;
@@ -37,24 +39,63 @@
     } catch (_) {}
   }
   function stopScore() {
+    soundVersion++;
     if (!activeScore) return;
     const old = activeScore;
     activeScore = null;
     const now = context.currentTime;
     old.bus.gain.cancelScheduledValues(now);
-    old.bus.gain.setTargetAtTime(0, now, .008);
+    old.bus.gain.setValueAtTime(old.bus.gain.value, now);
+    old.bus.gain.linearRampToValueAtTime(0, now + .035);
     for (const note of old.voices) {
       try { note.stop(now + .04); } catch (_) {}
     }
   }
+  function sampleBuffer(kind) {
+    if (sampleBuffers.has(kind)) return sampleBuffers.get(kind);
+    // Read the original 44.1 kHz samples directly, including their quiet tails.
+    // Packing the bytes as a script makes file:// and the offline Android asset
+    // origin work without a fetch, codec download, or media-element CORS grant.
+    const bytes = atob(window.ClassPetSoftSamples[kind]);
+    const buffer = context.createBuffer(1, bytes.length / 2, 44100);
+    const channel = buffer.getChannelData(0);
+    for (let i = 0; i < channel.length; i++) {
+      const value = bytes.charCodeAt(i * 2) | bytes.charCodeAt(i * 2 + 1) << 8;
+      channel[i] = (value < 32768 ? value : value - 65536) / 32768;
+    }
+    sampleBuffers.set(kind, buffer);
+    return buffer;
+  }
   function playCue(kind) {
     if (!context || context.state !== 'running' || !soundOn || document.hidden) return;
+    const sampled = kind === 'feed' || kind === 'adopt' || kind === 'treasure';
+    const buffer = sampled ? sampleBuffer(kind) : null;
     const bus = context.createGain();
-    bus.gain.value = .42;
+    bus.gain.value = sampled ? 1 : .42;
     bus.connect(context.destination);
     const score = {bus, voices: new Set()};
     activeScore = score;
-    const start = context.currentTime + .014;
+    const start = Math.ceil((context.currentTime + .014) * context.sampleRate) / context.sampleRate;
+    function track(source, envelope) {
+      score.voices.add(source);
+      source.onended = () => {
+        source.disconnect();
+        if (envelope) envelope.disconnect();
+        score.voices.delete(source);
+        if (!score.voices.size) {
+          bus.disconnect();
+          if (score === activeScore) activeScore = null;
+        }
+      };
+    }
+    if (sampled) {
+      const source = context.createBufferSource();
+      source.buffer = buffer;
+      source.connect(bus);
+      track(source, null);
+      source.start(start);
+      return;
+    }
     function voice(freq, when, duration, peak, wave) {
       const oscillator = context.createOscillator();
       const envelope = context.createGain();
@@ -65,16 +106,7 @@
       envelope.gain.exponentialRampToValueAtTime(.0001, when + duration);
       oscillator.connect(envelope);
       envelope.connect(bus);
-      score.voices.add(oscillator);
-      oscillator.onended = () => {
-        oscillator.disconnect();
-        envelope.disconnect();
-        score.voices.delete(oscillator);
-        if (!score.voices.size) {
-          bus.disconnect();
-          if (score === activeScore) activeScore = null;
-        }
-      };
+      track(oscillator, envelope);
       oscillator.start(when);
       oscillator.stop(when + duration + .015);
     }
@@ -82,6 +114,21 @@
       voice(frequency, start + offset, duration, .24, kind === 'gift' ? 'triangle' : 'sine');
       voice(2 * frequency, start + offset, duration * .55, .048, 'sine');
     }
+  }
+  function requestSound(kind) {
+    if (!soundOn || !context || document.hidden) return;
+    stopScore();
+    const version = soundVersion;
+    const started = performance.now();
+    function sound() {
+      if (version !== soundVersion || performance.now() - started > 650) return;
+      try { playCue(kind); } catch (_) {}
+    }
+    if (unlocking) unlocking.then(sound);
+    else sound();
+  }
+  function cue(kind) {
+    if (kind === 'feed' || kind === 'adopt') requestSound(kind);
   }
   function clear() {
     generation++;
@@ -155,14 +202,11 @@
     const host = document.fullscreenElement || dialogs[dialogs.length - 1] || document.body;
     host.appendChild(box);
     ribbon = box;
-    const started = performance.now();
-    function sound() {
-      if (version !== generation || performance.now() - started > 650) return;
-      try { playCue(kind); } catch (_) {}
-    }
-    if (unlocking) unlocking.then(sound);
-    else sound();
-    timer = window.setTimeout(() => { if (generation === version) clear(); }, 2450);
+    requestSound(kind === 'gift' && event.rewardType === 'treasure' ? 'treasure' : kind);
+    // A later everyday sound may still be finishing when this ribbon expires.
+    timer = window.setTimeout(() => {
+      if (generation === version) { box.remove(); ribbon = null; }
+    }, 2450);
   }
   if (soundButton) {
     updateButton();
@@ -180,6 +224,6 @@
   document.addEventListener('visibilitychange', () => { if (document.hidden) clear(); });
   window.addEventListener('beforeprint', clear);
   window.addEventListener('pagehide', clear);
-  window.addEventListener('hashchange', clear);
-  window.ClassPetCelebrate = {show, clear};
+  window.addEventListener('hashchange', () => { if (ribbon) clear(); });
+  window.ClassPetCelebrate = {show, cue, clear};
 })();
